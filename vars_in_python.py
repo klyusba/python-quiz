@@ -43,3 +43,7 @@ try:
 except ZeroDivisionError as bar:
     print(bar)
 print(bar)
+
+# ==  7 ==
+print(list(bar for bar in bar))
+print(bar)
