@@ -1,4 +1,4 @@
-bar = [2, 2]
+bar = [1, 2]
 
 
 # ==  1  ==
@@ -44,6 +44,52 @@ except ZeroDivisionError as bar:
     print(bar)
 print(bar)
 
-# ==  7 ==
+
+# ==  7  ==
 print(list(bar for bar in bar))
 print(bar)
+
+
+# ==  8  ==
+f = lambda: sum(bar)
+print(f())
+bar = [1, 2, 3, ]
+print(f())
+
+
+# ==  9  ==
+def foo(bar):
+    return lambda: sum(bar)
+
+f = foo(bar)
+print(f())
+bar = [1, 2, 3, ]
+print(f())
+
+
+# ==  10  ==
+foo = [
+    lambda: i
+    for i in bar
+]
+print(list(f() for f in foo))
+
+
+# ==  11  ==
+foo = [
+    lambda: i
+    for i in bar
+]
+print(list(f() for f in foo))
+bar = [1, 2, 3, ]
+print(list(f() for f in foo))
+bar[:] = [1, 2, 3, ]
+print(list(f() for f in foo))
+
+
+# ==  12  ==
+foo = [
+    lambda i=i: i
+    for i in bar
+]
+print(list(f() for f in foo))
